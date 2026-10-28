@@ -69,7 +69,7 @@ public class CalcControl {
     }
 
     private int getUsrNumber() {
-        System.out.println("Podaj liczbę");
+        System.out.println("Enter a number");
         int a = (int) dr.getUsrNmbr();
         return a;
     }
@@ -117,6 +117,6 @@ public class CalcControl {
         this.result = result;
     }
     private void wrongOption() {
-        System.out.println("\nBłędnie wybrana opcja\n");
+        System.out.println("\nWrong option\n");
     }
 }
