@@ -51,19 +51,19 @@ public class CalcControl {
         while (option != EXIT);
     }
     private void printCalcOptns() {
-        System.out.println("Wybierz opcję:");
-        System.out.println(ADDITION + " Dodawanie");
-        System.out.println(SUBSTRACTION + " Odejmowanie");
-        System.out.println(MULTIPLICATION + " Mnożenie");
-        System.out.println(DIVISION + " Dzielenie");
-        System.out.println(FACTORIAL + " Silnia");
-        System.out.println(EXIT + " Wyjdź");
+        System.out.println("Choose option:");
+        System.out.println(ADDITION + " Addition");
+        System.out.println(SUBSTRACTION + " Substraction");
+        System.out.println(MULTIPLICATION + " Multiplication");
+        System.out.println(DIVISION + " Division");
+        System.out.println(FACTORIAL + " Factorial");
+        System.out.println(EXIT + " Quit");
     }
     private double getUsrNumber(int a) {
         if (a == 0) {
-            System.out.println("Podaj pierwszą liczbę");
+            System.out.println("Enter a number");
         } else
-            System.out.println("Podaj drugą liczbę");
+            System.out.println("Enter a second number");
         double x = dr.getUsrNmbr();
         return x;
     }
@@ -110,7 +110,7 @@ public class CalcControl {
             System.out.println("ERROR");
     }
     private void printResult(double a) {
-        System.out.println("\nWynik to: ");
+        System.out.println("\nResult: ");
         System.out.println(a + "\n");
     }
     private void setResult(double result) {
