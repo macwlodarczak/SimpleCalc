@@ -36,6 +36,9 @@ public class CalcControl {
                     smthngTwoNumber(DIVISION);
                     printResult(result);
                     break;
+                case EXIT:
+                    dr.close();
+                    break;
                 default:
                     wrongOption();
             }

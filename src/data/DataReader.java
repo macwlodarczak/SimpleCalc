@@ -17,4 +17,7 @@ public class DataReader {
         sc.nextLine();
         return a;
     }
+    public void close() {
+        sc.close();
+    }
 }
