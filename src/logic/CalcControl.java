@@ -8,7 +8,8 @@ public class CalcControl {
     private static final int SUBSTRACTION = 2;
     private static final int MULTIPLICATION = 3;
     private static final int DIVISION = 4;
-    private static final int EXIT = 5;
+    private static final int FACTORIAL = 5;
+    private static final int EXIT = 6;
     private double result = 0;
     DataReader dr = new DataReader();
     Calculator calc = new Calculator();
@@ -36,6 +37,10 @@ public class CalcControl {
                     smthngTwoNumber(DIVISION);
                     printResult(result);
                     break;
+                case FACTORIAL:
+                    smthngTwoNumber(FACTORIAL);
+                    printResult(result);
+                    break;
                 case EXIT:
                     dr.close();
                     break;
@@ -51,6 +56,8 @@ public class CalcControl {
         System.out.println(SUBSTRACTION + " Odejmowanie");
         System.out.println(MULTIPLICATION + " Mnożenie");
         System.out.println(DIVISION + " Dzielenie");
+        System.out.println(FACTORIAL + " Silnia");
+        System.out.println(EXIT + " Wyjdź");
     }
     private double getUsrNumber(int a) {
         if (a == 0) {
@@ -60,6 +67,13 @@ public class CalcControl {
         double x = dr.getUsrNmbr();
         return x;
     }
+
+    private int getUsrNumber() {
+        System.out.println("Podaj liczbę");
+        int a = (int) dr.getUsrNmbr();
+        return a;
+    }
+
     private void smthngTwoNumber(int a) {
         double[] number = new double[2];
         if(a == ADDITION){
@@ -86,7 +100,13 @@ public class CalcControl {
             }
             double z = calc.divTwoNumbers(number[0], number[1]);
             setResult(z);
-        } else
+        } else if (a == FACTORIAL) {
+            int factorialNmb = getUsrNumber();
+            float b = calc.factorial(factorialNmb);
+            setResult(b);
+        }
+
+        else
             System.out.println("ERROR");
     }
     private void printResult(double a) {
