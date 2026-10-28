@@ -1,5 +1,7 @@
 package logic;
 
+import java.math.BigInteger;
+
 public class Calculator {
     public double addTwoNumbers(double a, double b) {
         double sum = a + b;
@@ -18,10 +20,11 @@ public class Calculator {
         return sum;
     }
 
-    public long factorial(int a) {
-        long result = 1;
+    public BigInteger factorial(int a) {
+//        long result = 1;
+        BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= a ; i++) {
-            result *= i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
     }

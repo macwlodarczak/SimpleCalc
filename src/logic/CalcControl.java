@@ -2,6 +2,8 @@ package logic;
 
 import data.DataReader;
 
+import java.math.BigInteger;
+
 public class CalcControl {
 
     private static final int ADDITION = 1;
@@ -11,6 +13,7 @@ public class CalcControl {
     private static final int FACTORIAL = 5;
     private static final int EXIT = 6;
     private double result = 0;
+    private BigInteger resultBI = BigInteger.valueOf(0);
     DataReader dr = new DataReader();
     Calculator calc = new Calculator();
 
@@ -39,7 +42,7 @@ public class CalcControl {
                     break;
                 case FACTORIAL:
                     smthngTwoNumber(FACTORIAL);
-                    printResult(result);
+                    printResult(resultBI);
                     break;
                 case EXIT:
                     dr.close();
@@ -102,7 +105,7 @@ public class CalcControl {
             setResult(z);
         } else if (a == FACTORIAL) {
             int factorialNmb = getUsrNumber();
-            float b = calc.factorial(factorialNmb);
+            BigInteger b = calc.factorial(factorialNmb);
             setResult(b);
         }
 
@@ -113,9 +116,20 @@ public class CalcControl {
         System.out.println("\nResult: ");
         System.out.println(a + "\n");
     }
+
+    private void printResult(BigInteger a){
+        System.out.println("\nResult: ");
+        System.out.println(a + "\n");
+    }
+
     private void setResult(double result) {
         this.result = result;
     }
+
+    private void setResult(BigInteger result) {
+        this.resultBI = result;
+    }
+
     private void wrongOption() {
         System.out.println("\nWrong option\n");
     }
