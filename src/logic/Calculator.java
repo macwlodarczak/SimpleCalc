@@ -1,4 +1,6 @@
-public class Calculator {
+package logic;
+
+class Calculator {
     public double addTwoNumbers(double a, double b) {
         double sum = a + b;
         return sum;

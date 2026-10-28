@@ -1,4 +1,6 @@
-public class CalculatorTest {
+import logic.CalcControl;
+
+class CalculatorTest {
     public static void main(String[] args) {
         CalcControl cc = new CalcControl();
         cc.controlLoop();

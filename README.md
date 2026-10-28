@@ -1,1 +1,1 @@
-#### Simple Calculator app
+#### Simple logic.Calculator app

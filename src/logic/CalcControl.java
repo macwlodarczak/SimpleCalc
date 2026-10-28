@@ -1,3 +1,7 @@
+package logic;
+
+import data.DataReader;
+
 public class CalcControl {
 
     private static final int ADDITION = 1;
@@ -9,7 +13,7 @@ public class CalcControl {
     DataReader dr = new DataReader();
     Calculator calc = new Calculator();
 
-    void controlLoop() {
+    public void controlLoop() {
         int option;
         do {
             printCalcOptns();
