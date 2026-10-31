@@ -24,30 +24,29 @@ public class CalcControl {
             option = dr.takeUsrOptn();
 
             switch(option) {
-                case ADDITION:
+                case ADDITION -> {
                     smthngTwoNumber(ADDITION);
                     printResult(result);
-                    break;
-                case SUBSTRACTION:
+                }
+                case SUBSTRACTION -> {
                     smthngTwoNumber(SUBSTRACTION);
                     printResult(result);
-                    break;
-                case MULTIPLICATION:
+                }
+                case MULTIPLICATION -> {
                     smthngTwoNumber(MULTIPLICATION);
                     printResult(result);
-                    break;
-                case DIVISION:
+                }
+                case DIVISION -> {
                     smthngTwoNumber(DIVISION);
                     printResult(result);
-                    break;
-                case FACTORIAL:
+                }
+                case FACTORIAL -> {
                     smthngTwoNumber(FACTORIAL);
                     printResult(resultBI);
-                    break;
-                case EXIT:
+                }
+                case EXIT ->
                     dr.close();
-                    break;
-                default:
+                default ->
                     wrongOption();
             }
         }
