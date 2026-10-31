@@ -25,23 +25,23 @@ public class CalcControl {
 
             switch(option) {
                 case ADDITION -> {
-                    smthngTwoNumber(ADDITION);
+                    operation(ADDITION);
                     printResult(result);
                 }
                 case SUBSTRACTION -> {
-                    smthngTwoNumber(SUBSTRACTION);
+                    operation(SUBSTRACTION);
                     printResult(result);
                 }
                 case MULTIPLICATION -> {
-                    smthngTwoNumber(MULTIPLICATION);
+                    operation(MULTIPLICATION);
                     printResult(result);
                 }
                 case DIVISION -> {
-                    smthngTwoNumber(DIVISION);
+                    operation(DIVISION);
                     printResult(result);
                 }
                 case FACTORIAL -> {
-                    smthngTwoNumber(FACTORIAL);
+                    operation(FACTORIAL);
                     printResult(resultBI);
                 }
                 case EXIT ->
@@ -53,12 +53,13 @@ public class CalcControl {
         while (option != EXIT);
     }
     private void printCalcOptns() {
+        System.out.println(">>>simpleCALCULATORv0.1<<<");
         System.out.println("Choose option:");
-        System.out.println(ADDITION + " Addition");
-        System.out.println(SUBSTRACTION + " Substraction");
-        System.out.println(MULTIPLICATION + " Multiplication");
-        System.out.println(DIVISION + " Division");
-        System.out.println(FACTORIAL + " Factorial");
+        System.out.println(ADDITION + " Addition (+)");
+        System.out.println(SUBSTRACTION + " Substraction (-)");
+        System.out.println(MULTIPLICATION + " Multiplication (*)");
+        System.out.println(DIVISION + " Division (/)");
+        System.out.println(FACTORIAL + " Factorial (!)");
         System.out.println(EXIT + " Quit");
     }
     private double getUsrNumber(int a) {
@@ -76,33 +77,38 @@ public class CalcControl {
         return a;
     }
 
-    private void smthngTwoNumber(int a) {
+    private void operation(int a) {
         double[] number = new double[2];
         if(a == ADDITION){
+            System.out.println("Selected operation: Addition(+)");
             for (int i = 0; i < number.length; i++) {
                 number[i] = getUsrNumber(i);
             }
             double z = calc.addTwoNumbers(number[0], number[1]);
             setResult(z);
         } else if (a == SUBSTRACTION) {
+            System.out.println("Selected operation: Substraction (-)");
             for (int i = 0; i < number.length; i++) {
                 number[i] = getUsrNumber(i);
             }
             double z = calc.subsTwoNumbers(number[0], number[1]);
             setResult(z);
         } else if (a == MULTIPLICATION) {
+            System.out.println("Selected operation: Multiplication (*)");
             for(int i = 0; i < number.length; i++) {
                 number[i] = getUsrNumber(i);
             }
             double z = calc.multiTwoNumbers(number[0], number[1]);
             setResult(z);
         } else if (a == DIVISION) {
+            System.out.println("Selected operation: Division (/)");
             for(int i = 0; i < number.length; i++) {
                 number[i] = getUsrNumber(i);
             }
             double z = calc.divTwoNumbers(number[0], number[1]);
             setResult(z);
         } else if (a == FACTORIAL) {
+            System.out.println("Selected operation: Factorial (!)");
             int factorialNmb = getUsrNumber();
             BigInteger b = calc.factorial(factorialNmb);
             setResult(b);
@@ -112,13 +118,11 @@ public class CalcControl {
             System.out.println("ERROR");
     }
     private void printResult(double a) {
-        System.out.println("\nResult: ");
-        System.out.println(a + "\n");
+        System.out.println("\nResult: " + a + "\n");
     }
 
     private void printResult(BigInteger a){
-        System.out.println("\nResult: ");
-        System.out.println(a + "\n");
+        System.out.println("\nResult: " + a + "\n");
     }
 
     private void setResult(double result) {
@@ -132,4 +136,6 @@ public class CalcControl {
     private void wrongOption() {
         System.out.println("\nWrong option\n");
     }
+
+
 }
