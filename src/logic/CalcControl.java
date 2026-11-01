@@ -78,42 +78,41 @@ public class CalcControl {
     }
 
     private void operation(int a) {
-        double[] number = new double[2];
+        double[] numbers = new double[2];
         if(a == ADDITION){
-            System.out.println("Selected operation: Addition(+)");
-            for (int i = 0; i < number.length; i++) {
-                number[i] = getUsrNumber(i);
+            printOperationName(ADDITION);
+            for (int i = 0; i < numbers.length; i++) {
+                numbers[i] = getUsrNumber(i);
             }
-            double z = calc.addTwoNumbers(number[0], number[1]);
+            double z = calc.addTwoNumbers(numbers[0], numbers[1]);
             setResult(z);
         } else if (a == SUBSTRACTION) {
-            System.out.println("Selected operation: Substraction (-)");
-            for (int i = 0; i < number.length; i++) {
-                number[i] = getUsrNumber(i);
+            printOperationName(SUBSTRACTION);
+            for (int i = 0; i < numbers.length; i++) {
+                numbers[i] = getUsrNumber(i);
             }
-            double z = calc.subsTwoNumbers(number[0], number[1]);
+            double z = calc.subsTwoNumbers(numbers[0], numbers[1]);
             setResult(z);
         } else if (a == MULTIPLICATION) {
-            System.out.println("Selected operation: Multiplication (*)");
-            for(int i = 0; i < number.length; i++) {
-                number[i] = getUsrNumber(i);
+            printOperationName(MULTIPLICATION);
+            for(int i = 0; i < numbers.length; i++) {
+                numbers[i] = getUsrNumber(i);
             }
-            double z = calc.multiTwoNumbers(number[0], number[1]);
+            double z = calc.multiTwoNumbers(numbers[0], numbers[1]);
             setResult(z);
         } else if (a == DIVISION) {
-            System.out.println("Selected operation: Division (/)");
-            for(int i = 0; i < number.length; i++) {
-                number[i] = getUsrNumber(i);
+            printOperationName(DIVISION);
+            for(int i = 0; i < numbers.length; i++) {
+                numbers[i] = getUsrNumber(i);
             }
-            double z = calc.divTwoNumbers(number[0], number[1]);
+            double z = calc.divTwoNumbers(numbers[0], numbers[1]);
             setResult(z);
         } else if (a == FACTORIAL) {
-            System.out.println("Selected operation: Factorial (!)");
+            printOperationName(FACTORIAL);
             int factorialNmb = getUsrNumber();
             BigInteger b = calc.factorial(factorialNmb);
             setResult(b);
         }
-
         else
             System.out.println("ERROR");
     }
@@ -137,5 +136,16 @@ public class CalcControl {
         System.out.println("\nWrong option\n");
     }
 
-
-}
+    private void printOperationName(int operationNmb) {
+        if (operationNmb == ADDITION)
+            System.out.println("Selected operation: Addition(+)");
+        if (operationNmb == SUBSTRACTION)
+            System.out.println("Selected operation: Substraction (-)");
+        if (operationNmb == MULTIPLICATION)
+            System.out.println("Selected operation: Multiplication (*)");
+        if (operationNmb == DIVISION)
+            System.out.println("Selected operation: Division (/)");
+        if (operationNmb == FACTORIAL)
+            System.out.println("Selected operation: Factorial (!)");
+        }
+    }
