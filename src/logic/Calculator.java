@@ -21,7 +21,6 @@ public class Calculator {
     }
 
     public BigInteger factorial(int a) {
-//        long result = 1;
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= a ; i++) {
             result = result.multiply(BigInteger.valueOf(i));
