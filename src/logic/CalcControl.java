@@ -12,6 +12,7 @@ public class CalcControl {
 
     private static final int SEE_RESULT = 1;
     private static final int ADD_ANOTHER_NMB = 2;
+    private static final int MAIN_MENU = 3;
 
     double[] numbers = new double[2];
 
@@ -68,6 +69,7 @@ public class CalcControl {
         System.out.println("Choose next step:");
         System.out.println(SEE_RESULT + " get Result");
         System.out.println(ADD_ANOTHER_NMB + " Add another Number");
+        System.out.println(MAIN_MENU + " return to Main Manu");
     }
     private int getNextSteps() {
         return dr.takeUsrOptn();
@@ -91,13 +93,13 @@ public class CalcControl {
         if (a == ADDITION) {
             printOperationName(ADDITION);
             getUserNumbers();
-            double z = calc.addTwoNumbers(numbers[0], numbers[1]);
-            setResult(z);
+            double sum = getSum();
+            setResult(sum);
         } else if (a == SUBSTRACTION) {
             printOperationName(SUBSTRACTION);
             getUserNumbers();
-            double z = calc.subsTwoNumbers(numbers[0], numbers[1]);
-            setResult(z);
+            double difference = getDifference();
+            setResult(difference);
         } else if (a == MULTIPLICATION) {
             printOperationName(MULTIPLICATION);
             getUserNumbers();
@@ -145,7 +147,11 @@ public class CalcControl {
             result = returnSum(x);
             printResult(result);
             resultOptions();
-        } else {
+        }
+        else if (a == MAIN_MENU) {
+            printResult(result);
+        }
+        else {
             System.out.println("Wrong option");
             printResult(result);
         }
@@ -176,5 +182,11 @@ public class CalcControl {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = getUsrNumbers(i);
         }
+    }
+    private double getSum() {
+        return calc.addTwoNumbers(numbers[0], numbers[1]);
+    }
+    private double getDifference() {
+        return calc.subsTwoNumbers(numbers[0], numbers[1]);
     }
 }
