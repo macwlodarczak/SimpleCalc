@@ -1,11 +1,8 @@
 package logic;
-
 import data.DataReader;
-
 import java.math.BigInteger;
 
 public class CalcControl {
-
     private static final int ADDITION = 1;
     private static final int SUBSTRACTION = 2;
     private static final int MULTIPLICATION = 3;
@@ -57,7 +54,6 @@ public class CalcControl {
         }
         while (option != EXIT);
     }
-
     private void printCalcOptns() {
         System.out.println(">>>simpleCALCULATORv0.1<<<");
         System.out.println("Choose option:");
@@ -68,13 +64,11 @@ public class CalcControl {
         System.out.println(FACTORIAL + " Factorial (!)");
         System.out.println(EXIT + " Quit");
     }
-
     private void printNextSteps() {
         System.out.println("Choose next step:");
         System.out.println(SEE_RESULT + " get Result");
         System.out.println(ADD_ANOTHER_NMB + " Add another Number");
     }
-
     private int getNextSteps() {
         return dr.takeUsrOptn();
     }
@@ -87,13 +81,11 @@ public class CalcControl {
         double x = dr.getUsrNmbr();
         return x;
     }
-
     private int getUsrNumbers() {
         System.out.println("Enter a number");
         int a = (int) dr.getUsrNmbr();
         return a;
     }
-
     private void operation(int a) {
 
         if (a == ADDITION) {
@@ -124,7 +116,6 @@ public class CalcControl {
         } else
             System.out.println("ERROR");
     }
-
     private void printResult(double a) {
         System.out.println("\nResult: " + a + "\n");
     }
@@ -141,7 +132,6 @@ public class CalcControl {
         double a = savedResult + nmbr;
         return a;
     }
-
     private void resultOptions() {
         printNextSteps();
         int a = getNextSteps();
@@ -160,15 +150,12 @@ public class CalcControl {
             printResult(result);
         }
     }
-
     private void setResult(double result) {
         this.result = result;
     }
-
     private void setResult(BigInteger result) {
         this.resultBI = result;
     }
-
     private void wrongOption() {
         System.out.println("\nWrong option\n");
     }
@@ -185,7 +172,6 @@ public class CalcControl {
         if (operationNmb == FACTORIAL)
             System.out.println("Selected operation: Factorial (!)");
     }
-
     private void getUserNumbers() {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = getUsrNumbers(i);
