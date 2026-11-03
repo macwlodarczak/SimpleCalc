@@ -1,10 +1,13 @@
 package data;
 
+import logic.CalcControl;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DataReader {
     private Scanner sc = new Scanner(System.in);
+
 
     public int takeUsrOptn() {
         int a = -1;
@@ -16,6 +19,8 @@ public class DataReader {
                 error = false;
             } catch (InputMismatchException e) {
                 System.out.println("Please try again");
+                CalcControl cc = new CalcControl();
+                cc.printCalcOptns();
                 sc.nextLine();
             }
         } while (error);
@@ -28,7 +33,6 @@ public class DataReader {
             try {
                 a = sc.nextDouble();
                 sc.nextLine();
-//                return a;
                 error = false;
             } catch (InputMismatchException e) {
                 System.out.println("Please try again");

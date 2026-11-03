@@ -55,7 +55,7 @@ public class CalcControl {
         }
         while (option != EXIT);
     }
-    private void printCalcOptns() {
+    public void printCalcOptns() {
         System.out.println(">>>simpleCALCULATORv0.1<<<");
         System.out.println("Choose option:");
         System.out.println(ADDITION + " Addition (+)");
