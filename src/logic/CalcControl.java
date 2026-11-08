@@ -25,10 +25,14 @@ public class CalcControl {
     private final Calculator calc = new Calculator();
 
     public void controlLoop() {
-        String option;
+        String option = "";
         do {
             printCalcOptns();
-            option = dr.takeUsrOptn(MAIN_MENU_OPTION);
+            try {
+                option = dr.takeUsrOptn(MAIN_MENU_OPTION);
+            } catch (IllegalArgumentException ex) {
+                System.err.println(ex.getMessage());
+            }
 
             switch (option) {
                 case ADDITION -> {
@@ -52,7 +56,7 @@ public class CalcControl {
                     printResult(resultBI);
                 }
                 case EXIT -> dr.close();
-                default -> wrongOption();
+//                default -> wrongOption();
             }
         }
         while (!option.equals(EXIT));
@@ -137,7 +141,13 @@ public class CalcControl {
         }
     }
     private String getNextSteps() {
-        return dr.takeUsrOptn(NEXT_STEP_OPTION);
+        String userOption = "";
+        try {
+            userOption = dr.takeUsrOptn(NEXT_STEP_OPTION);
+        } catch (IllegalArgumentException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return userOption;
     }
     private void printResult(double a) {
         System.out.println("\nResult: " + a + "\n");
@@ -180,8 +190,8 @@ public class CalcControl {
             }
             case RETURN_TO_MAIN_MENU -> printResult(result);
             default -> {
-                System.out.println("Wrong option");
                 printResult(result);
+                resultOptions();
             }
         }
     }

@@ -13,32 +13,25 @@ public class DataReader {
         boolean error = true;
         if (option.equals(CalcControl.MAIN_MENU_OPTION)) {
             do {
-                try {
-                    userOption = sc.nextLine();
-                    if (!userOption.matches("^(?:[-+=/*!]*|[Ee]xit)$")) {
-                        throw new IllegalArgumentException("Please enter correct character or type 'Exit' to quit ");
-                    } else
-                        error = false;
-                } catch (IllegalArgumentException ex) {
-                    System.err.println(ex.getMessage());
-                }
+                userOption = sc.nextLine();
+                if (!userOption.matches("^(?:[-+=/*!]*|[Ee]xit)$")) {
+                    throw new IllegalArgumentException("Please enter correct character or type 'Exit' to quit ");
+                } else
+                    error = false;
             } while (error);
-        }
-        else if (option.equals(CalcControl.NEXT_STEP_OPTION)){
+        } else if (option.equals(CalcControl.NEXT_STEP_OPTION)) {
             do {
-                try {
-                    userOption = sc.nextLine();
-                    if (!userOption.matches("^(?:[-+=]*|[Mm]enu)$")) {
-                throw new IllegalArgumentException("Please enter correct character or type 'Menu' to quit ");
-                    } else
-                        error = false;
-                } catch (IllegalArgumentException ex) {
-                    System.err.println(ex.getMessage());
-                }
+                userOption = sc.nextLine();
+                if (!userOption.matches("^(?:[-+=]*|[Mm]enu)$")) {
+                    throw new IllegalArgumentException("Please enter correct character or type 'Menu' to quit ");
+                } else
+                    error = false;
             } while (error);
 
-        } return userOption;
+        }
+        return userOption;
     }
+
     public double getUsrNmbr() {
         boolean error = true;
         double a = 0;
@@ -54,6 +47,7 @@ public class DataReader {
         } while (error);
         return a;
     }
+
     public void close() {
         sc.close();
     }
