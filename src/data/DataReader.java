@@ -6,16 +6,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DataReader {
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
 
-    public int takeUsrOptn() {
-        int a = -1;
+    public String takeUsrOptn() {
+        String a = null;
         boolean error = true;
         do {
             try {
-                a = sc.nextInt();
-                sc.nextLine();
+                a = sc.nextLine();
                 error = false;
             } catch (InputMismatchException e) {
                 System.out.println("Please try again");
