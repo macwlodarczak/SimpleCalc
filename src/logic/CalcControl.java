@@ -4,24 +4,24 @@ import java.math.BigInteger;
 
 public class CalcControl {
     private static final String ADDITION = "+";
-    private static final String SUBSTRACTION = "-";
+    private static final String SUBTRACTION = "-";
     private static final String MULTIPLICATION = "*";
     private static final String DIVISION = "/";
     private static final String FACTORIAL = "!";
     private static final String EXIT = "Exit";
 
     private static final String SEE_RESULT = "=";
-    private static final String ADD_ANOTHER_NMB = "+";
+//    private static final String ADD_ANOTHER_NMB = "+";
     private static final String MAIN_MENU = "menu";
 
     private static final int ARRAY_MAX_NMB = 2;
-    double[] numbers = new double[ARRAY_MAX_NMB];
+    private final double[] numbers = new double[ARRAY_MAX_NMB];
 
-    private static double result = 0;
-    private static double savedResult = 0;
+    private double result = 0;
+    private double savedResult = 0;
     private BigInteger resultBI = BigInteger.valueOf(0);
-    DataReader dr = new DataReader();
-    Calculator calc = new Calculator();
+    private final DataReader dr = new DataReader();
+    private final Calculator calc = new Calculator();
 
     public void controlLoop() {
         String option;
@@ -34,8 +34,8 @@ public class CalcControl {
                     operation(ADDITION);
                     resultOptions();
                 }
-                case SUBSTRACTION -> {
-                    operation(SUBSTRACTION);
+                case SUBTRACTION -> {
+                    operation(SUBTRACTION);
                     printResult(result);
                 }
                 case MULTIPLICATION -> {
@@ -61,23 +61,31 @@ public class CalcControl {
         System.out.println("Choose an option:");
         System.out.println("(Type correct sign)" + "\n");
         System.out.println("\"" + ADDITION + "\"" + " for Addition (+)");
-        System.out.println("\"" + SUBSTRACTION + "\"" + "for Substraction (-)");
+        System.out.println("\"" + SUBTRACTION + "\"" + "for Substraction (-)");
         System.out.println("\"" + MULTIPLICATION + "\"" + " for Multiplication (*)");
         System.out.println("\"" +DIVISION + "\"" + " for Division (/)");
         System.out.println("\"" + FACTORIAL + "\"" + " for Factorial (!)");
-        System.out.println("\"" + EXIT + "\"" + " for Quit");
+        System.out.println("type: " + "\"" + EXIT + "\"" + " for Quit");
     }
     private void printNextSteps() {
         System.out.println("Choose next step:");
         System.out.println(SEE_RESULT + " get Result");
-        System.out.println(SUBSTRACTION + " Substract a Number");
-        System.out.println(ADD_ANOTHER_NMB + " Add another Number");
-        System.out.println(MAIN_MENU + " return to Main Manu");
+        System.out.println(SUBTRACTION + " Substract a Result");
+        System.out.println(ADDITION + " Add another Number");
+        System.out.println("type: " + "\"" + MAIN_MENU + "\"" + " to return");
     }
-    private String getNextSteps() {
-        return dr.takeUsrOptn();
+    private void printOperationName(String operationType) {
+        if (operationType.equals(ADDITION))
+            System.out.println("Selected operation: Addition(+)");
+        if (operationType.equals(SUBTRACTION))
+            System.out.println("Selected operation: Substraction (-)");
+        if (operationType.equals(MULTIPLICATION))
+            System.out.println("Selected operation: Multiplication (*)");
+        if (operationType.equals(DIVISION))
+            System.out.println("Selected operation: Division (/)");
+        if (operationType.equals(FACTORIAL))
+            System.out.println("Selected operation: Factorial (!)");
     }
-
     private double getUsersNextNumber(int a) {
         if (a == 0) {
             System.out.println("Enter a number");
@@ -100,8 +108,8 @@ public class CalcControl {
                 double sum = getSum();
                 setResult(sum);
             }
-            case SUBSTRACTION -> {
-                printOperationName(SUBSTRACTION);
+            case SUBTRACTION -> {
+                printOperationName(SUBTRACTION);
                 getUserNumbers();
                 double difference = getDifference();
                 setResult(difference);
@@ -127,18 +135,18 @@ public class CalcControl {
             default -> System.out.println("ERROR");
         }
     }
+    private String getNextSteps() {
+        return dr.takeUsrOptn();
+    }
     private void printResult(double a) {
         System.out.println("\nResult: " + a + "\n");
     }
-
     private void printResult(BigInteger a) {
         System.out.println("\nResult: " + a + "\n");
     }
-
     private void saveResult() {
         savedResult = result;
     }
-
     private double returnSum(double nmbr) {
         double a = savedResult + nmbr;
         return a;
@@ -147,22 +155,20 @@ public class CalcControl {
         double a = savedResult - nmbr;
         return a;
     }
-
     private void resultOptions() {
         printNextSteps();
         String a = getNextSteps();
         if (a.equals(SEE_RESULT)) {
             printResult(result);
             resultOptions();
-        } else if (a.equals(SUBSTRACTION)) {
+        } else if (a.equals(SUBTRACTION)) {
             saveResult();
             double x = getUsersNextNumber();
             result =  returnSubstract(x);
             printResult(result);
             resultOptions();
         }
-
-        else if (a.equals(ADD_ANOTHER_NMB)) {
+        else if (a.equals(ADDITION)) {
             saveResult();
             double x = getUsersNextNumber();
             result = returnSum(x);
@@ -187,18 +193,7 @@ public class CalcControl {
         System.out.println("\nWrong option\n");
     }
 
-    private void printOperationName(String operationNmb) {
-        if (operationNmb == ADDITION)
-            System.out.println("Selected operation: Addition(+)");
-        if (operationNmb == SUBSTRACTION)
-            System.out.println("Selected operation: Substraction (-)");
-        if (operationNmb == MULTIPLICATION)
-            System.out.println("Selected operation: Multiplication (*)");
-        if (operationNmb == DIVISION)
-            System.out.println("Selected operation: Division (/)");
-        if (operationNmb == FACTORIAL)
-            System.out.println("Selected operation: Factorial (!)");
-    }
+
     private void getUserNumbers() {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = getUsersNextNumber(i);
