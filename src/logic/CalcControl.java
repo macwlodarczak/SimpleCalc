@@ -11,8 +11,9 @@ public class CalcControl {
     private static final String EXIT = "Exit";
 
     private static final String SEE_RESULT = "=";
-//    private static final String ADD_ANOTHER_NMB = "+";
-    private static final String MAIN_MENU = "menu";
+    private static final String RETURN_TO_MAIN_MENU = "menu";
+    public static final String MAIN_MENU_OPTION = "Main Menu";
+    public static final String NEXT_STEP_OPTION = "Next Step";
 
     private static final int ARRAY_MAX_NMB = 2;
     private final double[] numbers = new double[ARRAY_MAX_NMB];
@@ -27,7 +28,7 @@ public class CalcControl {
         String option;
         do {
             printCalcOptns();
-            option = dr.takeUsrOptn();
+            option = dr.takeUsrOptn(MAIN_MENU_OPTION);
 
             switch (option) {
                 case ADDITION -> {
@@ -72,7 +73,7 @@ public class CalcControl {
         System.out.println(SEE_RESULT + " get Result");
         System.out.println(SUBTRACTION + " Substract a Result");
         System.out.println(ADDITION + " Add another Number");
-        System.out.println("type: " + "\"" + MAIN_MENU + "\"" + " to return");
+        System.out.println("type: " + "\"" + RETURN_TO_MAIN_MENU + "\"" + " to return");
     }
     private void printOperationName(String operationType) {
         if (operationType.equals(ADDITION))
@@ -136,7 +137,7 @@ public class CalcControl {
         }
     }
     private String getNextSteps() {
-        return dr.takeUsrOptn();
+        return dr.takeUsrOptn(NEXT_STEP_OPTION);
     }
     private void printResult(double a) {
         System.out.println("\nResult: " + a + "\n");
@@ -175,7 +176,7 @@ public class CalcControl {
             printResult(result);
             resultOptions();
         }
-        else if (a.equals(MAIN_MENU)) {
+        else if (a.equals(RETURN_TO_MAIN_MENU)) {
             printResult(result);
         }
         else {
@@ -192,8 +193,6 @@ public class CalcControl {
     private void wrongOption() {
         System.out.println("\nWrong option\n");
     }
-
-
     private void getUserNumbers() {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = getUsersNextNumber(i);

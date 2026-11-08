@@ -8,22 +8,36 @@ import java.util.Scanner;
 public class DataReader {
     private final Scanner sc = new Scanner(System.in);
 
-
-    public String takeUsrOptn() {
-        String a = null;
+    public String takeUsrOptn(String option) {
+        String userOption = null;
         boolean error = true;
-        do {
-            try {
-                a = sc.nextLine();
-                error = false;
-            } catch (InputMismatchException e) {
-                System.out.println("Please try again");
-                CalcControl cc = new CalcControl();
-                cc.printCalcOptns();
-                sc.nextLine();
-            }
-        } while (error);
-        return a;
+        if (option.equals(CalcControl.MAIN_MENU_OPTION)) {
+            do {
+                try {
+                    userOption = sc.nextLine();
+                    if (!userOption.matches("^(?:[-+=/*!]*|[Ee]xit)$")) {
+                        throw new IllegalArgumentException("Please enter correct character or type 'Exit' to quit ");
+                    } else
+                        error = false;
+                } catch (IllegalArgumentException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            } while (error);
+        }
+        else if (option.equals(CalcControl.NEXT_STEP_OPTION)){
+            do {
+                try {
+                    userOption = sc.nextLine();
+                    if (!userOption.matches("^(?:[-+=]*|[Mm]enu)$")) {
+                throw new IllegalArgumentException("Please enter correct character or type 'Menu' to quit ");
+                    } else
+                        error = false;
+                } catch (IllegalArgumentException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            } while (error);
+
+        } return userOption;
     }
     public double getUsrNmbr() {
         boolean error = true;
