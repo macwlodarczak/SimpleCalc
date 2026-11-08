@@ -159,29 +159,30 @@ public class CalcControl {
     private void resultOptions() {
         printNextSteps();
         String a = getNextSteps();
-        if (a.equals(SEE_RESULT)) {
-            printResult(result);
-            resultOptions();
-        } else if (a.equals(SUBTRACTION)) {
-            saveResult();
-            double x = getUsersNextNumber();
-            result =  returnSubstract(x);
-            printResult(result);
-            resultOptions();
-        }
-        else if (a.equals(ADDITION)) {
-            saveResult();
-            double x = getUsersNextNumber();
-            result = returnSum(x);
-            printResult(result);
-            resultOptions();
-        }
-        else if (a.equals(RETURN_TO_MAIN_MENU)) {
-            printResult(result);
-        }
-        else {
-            System.out.println("Wrong option");
-            printResult(result);
+        switch (a) {
+            case SEE_RESULT -> {
+                printResult(result);
+                resultOptions();
+            }
+            case SUBTRACTION -> {
+                saveResult();
+                double x = getUsersNextNumber();
+                result = returnSubstract(x);
+                printResult(result);
+                resultOptions();
+            }
+            case ADDITION -> {
+                saveResult();
+                double x = getUsersNextNumber();
+                result = returnSum(x);
+                printResult(result);
+                resultOptions();
+            }
+            case RETURN_TO_MAIN_MENU -> printResult(result);
+            default -> {
+                System.out.println("Wrong option");
+                printResult(result);
+            }
         }
     }
     private void setResult(double result) {
