@@ -1,28 +1,27 @@
 package logic;
+
 import data.DataReader;
+
 import java.math.BigInteger;
 
 public class CalcControl {
+    public static final String MAIN_MENU_OPTION = "Main Menu";
+    public static final String NEXT_STEP_OPTION = "Next Step";
     private static final String ADDITION = "+";
     private static final String SUBTRACTION = "-";
     private static final String MULTIPLICATION = "*";
     private static final String DIVISION = "/";
     private static final String FACTORIAL = "!";
     private static final String EXIT = "Exit";
-
     private static final String SEE_RESULT = "=";
     private static final String RETURN_TO_MAIN_MENU = "menu";
-    public static final String MAIN_MENU_OPTION = "Main Menu";
-    public static final String NEXT_STEP_OPTION = "Next Step";
-
     private static final int ARRAY_MAX_NMB = 2;
     private final double[] numbers = new double[ARRAY_MAX_NMB];
-
+    private final DataReader dr = new DataReader();
+    private final Calculator calc = new Calculator();
     private double result = 0;
     private double savedResult = 0;
     private BigInteger resultBI = BigInteger.valueOf(0);
-    private final DataReader dr = new DataReader();
-    private final Calculator calc = new Calculator();
 
     public void controlLoop() {
         String option = "";
@@ -61,6 +60,7 @@ public class CalcControl {
         }
         while (!option.equals(EXIT));
     }
+
     public void printCalcOptns() {
         System.out.println(">>>simpleCALCULATORv0.1<<<");
         System.out.println("Choose an option:");
@@ -68,10 +68,11 @@ public class CalcControl {
         System.out.println("\"" + ADDITION + "\"" + " for Addition (+)");
         System.out.println("\"" + SUBTRACTION + "\"" + "for Substraction (-)");
         System.out.println("\"" + MULTIPLICATION + "\"" + " for Multiplication (*)");
-        System.out.println("\"" +DIVISION + "\"" + " for Division (/)");
+        System.out.println("\"" + DIVISION + "\"" + " for Division (/)");
         System.out.println("\"" + FACTORIAL + "\"" + " for Factorial (!)");
         System.out.println("type: " + "\"" + EXIT + "\"" + " for Quit");
     }
+
     private void printNextSteps() {
         System.out.println("Choose next step:");
         System.out.println(SEE_RESULT + " get Result");
@@ -79,6 +80,7 @@ public class CalcControl {
         System.out.println(ADDITION + " Add another Number");
         System.out.println("type: " + "\"" + RETURN_TO_MAIN_MENU + "\"" + " to return");
     }
+
     private void printOperationName(String operationType) {
         if (operationType.equals(ADDITION))
             System.out.println("Selected operation: Addition(+)");
@@ -91,6 +93,7 @@ public class CalcControl {
         if (operationType.equals(FACTORIAL))
             System.out.println("Selected operation: Factorial (!)");
     }
+
     private double getUsersNextNumber(int a) {
         if (a == 0) {
             System.out.println("Enter a number");
@@ -99,11 +102,13 @@ public class CalcControl {
         double x = dr.getUsrNmbr();
         return x;
     }
+
     private int getUsersNextNumber() {
         System.out.println("Enter a number");
         int a = (int) dr.getUsrNmbr();
         return a;
     }
+
     private void operation(String operationName) {
 
         switch (operationName) {
@@ -140,6 +145,7 @@ public class CalcControl {
             default -> System.out.println("ERROR");
         }
     }
+
     private String getNextSteps() {
         String userOption = "";
         try {
@@ -149,69 +155,76 @@ public class CalcControl {
         }
         return userOption;
     }
+
     private void printResult(double a) {
         System.out.println("\nResult: " + a + "\n");
     }
+
     private void printResult(BigInteger a) {
         System.out.println("\nResult: " + a + "\n");
     }
+
     private void saveResult() {
         savedResult = result;
     }
+
     private double returnSum(double nmbr) {
         double a = savedResult + nmbr;
         return a;
     }
+
     private double returnSubstract(double nmbr) {
         double a = savedResult - nmbr;
         return a;
     }
+
     private void resultOptions() {
         printNextSteps();
-        String a = getNextSteps();
-        switch (a) {
-            case SEE_RESULT -> {
-                printResult(result);
-                resultOptions();
+        String a;
+        do {
+            a = getNextSteps();
+            switch (a) {
+                case SEE_RESULT -> {
+                    printResult(result);
+                }
+                case SUBTRACTION -> {
+                    saveResult();
+                    double x = getUsersNextNumber();
+                    result = returnSubstract(x);
+                    printResult(result);
+                }
+                case ADDITION -> {
+                    saveResult();
+                    double x = getUsersNextNumber();
+                    result = returnSum(x);
+                    printResult(result);
+                }
             }
-            case SUBTRACTION -> {
-                saveResult();
-                double x = getUsersNextNumber();
-                result = returnSubstract(x);
-                printResult(result);
-                resultOptions();
-            }
-            case ADDITION -> {
-                saveResult();
-                double x = getUsersNextNumber();
-                result = returnSum(x);
-                printResult(result);
-                resultOptions();
-            }
-            case RETURN_TO_MAIN_MENU -> printResult(result);
-            default -> {
-                printResult(result);
-                resultOptions();
-            }
-        }
+        } while (!a.equals(RETURN_TO_MAIN_MENU));
     }
+
     private void setResult(double result) {
         this.result = result;
     }
+
     private void setResult(BigInteger result) {
         this.resultBI = result;
     }
+
     private void wrongOption() {
         System.out.println("\nWrong option\n");
     }
+
     private void getUserNumbers() {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = getUsersNextNumber(i);
         }
     }
+
     private double getSum() {
         return calc.addTwoNumbers(numbers[0], numbers[1]);
     }
+
     private double getDifference() {
         return calc.subsTwoNumbers(numbers[0], numbers[1]);
     }
