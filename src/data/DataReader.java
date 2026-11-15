@@ -8,11 +8,17 @@ import java.util.Scanner;
 public class DataReader {
     private final Scanner sc = new Scanner(System.in);
 
+    private static final String MAIN_MENU_USER_INPUT_VALIDATION = "^(?:[-+*/]|[Ee]xit)$";
+    private static final String MAIN_MENU_ERROR_MSG = "Please enter correct character or type 'Exit' to quit";
+
+    private static final String NEXT_STEP_USER_INPUT_VALIDATION = "^(?:[-+=*/]|[Mm]enu)$";
+    private static final String NEXT_STEP_ERROR_MSG = "Please enter correct character or type 'Menu' to quit";
+
     public String takeUsrOptn(String option) {
         if (option.equals(CalcControl.MAIN_MENU_OPTION)) {
-            return validateInput("^(?:[-+*/]|[Ee]xit)$", "Please enter correct character or type 'Exit' to quit");
+            return validateInput(MAIN_MENU_USER_INPUT_VALIDATION, MAIN_MENU_ERROR_MSG);
         } else if (option.equals(CalcControl.NEXT_STEP_OPTION)) {
-            return validateInput("^(?:[-+=*/]|[Mm]enu)$", "Please enter correct character or type 'Menu' to quit");
+            return validateInput(NEXT_STEP_USER_INPUT_VALIDATION, NEXT_STEP_ERROR_MSG);
         }
         return null;
     }

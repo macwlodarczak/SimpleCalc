@@ -56,54 +56,6 @@ public class CalcControl {
         while (!option.equals(EXIT));
     }
 
-    public void printCalcOptns() {
-        System.out.println(">>>simpleCALCULATORv0.1<<<");
-        System.out.println("Choose an option:");
-        System.out.println("(Type correct sign)" + "\n");
-        System.out.println("\"" + ADDITION + "\"" + " for Addition (+)");
-        System.out.println("\"" + SUBTRACTION + "\"" + "for Substraction (-)");
-        System.out.println("\"" + MULTIPLICATION + "\"" + " for Multiplication (*)");
-        System.out.println("\"" + DIVISION + "\"" + " for Division (/)");
-        System.out.println("\"" + FACTORIAL + "\"" + " for Factorial (!)");
-        System.out.println("type: " + "\"" + EXIT + "\"" + " for Quit");
-    }
-
-    private void printNextSteps() {
-        System.out.println("Choose next step:");
-        System.out.println(SEE_RESULT + " get Result");
-        System.out.println(ADDITION + " Add another Number");
-        System.out.println(SUBTRACTION + " Substract a Result");
-        System.out.println(MULTIPLICATION + " Multiply a Result");
-        System.out.println(DIVISION + " Divide a Result");
-        System.out.println("type: " + "\"" + RETURN_TO_MAIN_MENU + "\"" + " to return");
-    }
-
-    private void printOperationName(String operationType) {
-        if (operationType.equals(ADDITION))
-            System.out.println("Selected operation: Addition(+)");
-        if (operationType.equals(SUBTRACTION))
-            System.out.println("Selected operation: Substraction (-)");
-        if (operationType.equals(MULTIPLICATION))
-            System.out.println("Selected operation: Multiplication (*)");
-        if (operationType.equals(DIVISION))
-            System.out.println("Selected operation: Division (/)");
-        if (operationType.equals(FACTORIAL))
-            System.out.println("Selected operation: Factorial (!)");
-    }
-
-    private void printPrompt_Enter_a_number() {
-        System.out.println("Enter a number");
-    }
-
-    private double getUsersNextNumber() {
-        return dr.getUsrNmbr();
-    }
-
-    private double getUserNumbers() {
-        printPrompt_Enter_a_number();
-        return dr.getUsrNmbr();
-    }
-
     private double operation(String operationType) {
         double wynik = 0;
 
@@ -144,24 +96,6 @@ public class CalcControl {
         return wynik;
     }
 
-    private String getNextSteps() {
-        String userOption = null;
-        try {
-            userOption = dr.takeUsrOptn(NEXT_STEP_OPTION);
-        } catch (IllegalArgumentException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return userOption;
-    }
-
-    private void printResult(double a) {
-        System.out.println("\nResult: " + a + "\n");
-    }
-
-    private void printResult(BigInteger a) {
-        System.out.println("\nResult: " + a + "\n");
-    }
-
     private void afterOperationOptions(double result) {
         String nextStep;
         do {
@@ -190,7 +124,73 @@ public class CalcControl {
         } while (!nextStep.equals(RETURN_TO_MAIN_MENU));
     }
 
+    private double getUsersNextNumber() {
+        return dr.getUsrNmbr();
+    }
+
+    private double getUserNumbers() {
+        printPrompt_Enter_a_number();
+        return dr.getUsrNmbr();
+    }
+
+    private String getNextSteps() {
+        String userOption = null;
+        try {
+            userOption = dr.takeUsrOptn(NEXT_STEP_OPTION);
+        } catch (IllegalArgumentException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return userOption;
+    }
+
+    private void printResult(double a) {
+        System.out.println("\nResult: " + a + "\n");
+    }
+
+    private void printResult(BigInteger a) {
+        System.out.println("\nResult: " + a + "\n");
+    }
+
     private void setResult(BigInteger result) {
         this.resultBI = result;
+    }
+
+    public void printCalcOptns() {
+        System.out.println(">>>simpleCALCULATORv0.1<<<");
+        System.out.println("Choose an option:");
+        System.out.println("(Type correct sign)" + "\n");
+        System.out.println("\"" + ADDITION + "\"" + " for Addition (+)");
+        System.out.println("\"" + SUBTRACTION + "\"" + "for Substraction (-)");
+        System.out.println("\"" + MULTIPLICATION + "\"" + " for Multiplication (*)");
+        System.out.println("\"" + DIVISION + "\"" + " for Division (/)");
+        System.out.println("\"" + FACTORIAL + "\"" + " for Factorial (!)");
+        System.out.println("type: " + "\"" + EXIT + "\"" + " for Quit");
+    }
+
+    private void printNextSteps() {
+        System.out.println("Choose next step:");
+        System.out.println(SEE_RESULT + " get Result");
+        System.out.println(ADDITION + " Add another Number");
+        System.out.println(SUBTRACTION + " Substract a Result");
+        System.out.println(MULTIPLICATION + " Multiply a Result");
+        System.out.println(DIVISION + " Divide a Result");
+        System.out.println("type: " + "\"" + RETURN_TO_MAIN_MENU + "\"" + " to return");
+    }
+
+    private void printOperationName(String operationType) {
+        if (operationType.equals(ADDITION))
+            System.out.println("Selected operation: Addition(+)");
+        if (operationType.equals(SUBTRACTION))
+            System.out.println("Selected operation: Substraction (-)");
+        if (operationType.equals(MULTIPLICATION))
+            System.out.println("Selected operation: Multiplication (*)");
+        if (operationType.equals(DIVISION))
+            System.out.println("Selected operation: Division (/)");
+        if (operationType.equals(FACTORIAL))
+            System.out.println("Selected operation: Factorial (!)");
+    }
+
+    private void printPrompt_Enter_a_number() {
+        System.out.println("Enter a number");
     }
 }
