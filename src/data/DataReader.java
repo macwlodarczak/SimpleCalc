@@ -9,26 +9,24 @@ public class DataReader {
     private final Scanner sc = new Scanner(System.in);
 
     public String takeUsrOptn(String option) {
-        String userOption = null;
-        boolean error = true;
         if (option.equals(CalcControl.MAIN_MENU_OPTION)) {
-            do {
-                userOption = sc.nextLine();
-                if (!userOption.matches("^(?:[-+=/*!]*|[Ee]xit)$")) {
-                    throw new IllegalArgumentException("Please enter correct character or type 'Exit' to quit ");
-                } else
-                    error = false;
-            } while (error);
+            return validateInput("^(?:[-+*/]|[Ee]xit)$", "Please enter correct character or type 'Exit' to quit");
         } else if (option.equals(CalcControl.NEXT_STEP_OPTION)) {
-            do {
-                userOption = sc.nextLine();
-                if (!userOption.matches("^(?:[-+=]*|[Mm]enu)$")) {
-                    throw new IllegalArgumentException("Please enter correct character or type 'Menu' to quit ");
-                } else
-                    error = false;
-            } while (error);
-
+            return validateInput("^(?:[-+=*/]|[Mm]enu)$", "Please enter correct character or type 'Menu' to quit");
         }
+        return null;
+    }
+
+    private String validateInput(String regex, String errorMessage) {
+        String userOption;
+        boolean flag = true;
+        do {
+            userOption = sc.nextLine();
+            if (!userOption.matches(regex)) {
+                throw new IllegalArgumentException(errorMessage);
+            } else
+                flag = false;
+        } while (flag);
         return userOption;
     }
 
