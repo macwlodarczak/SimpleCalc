@@ -16,9 +16,9 @@ public class DataReader {
 
     public String takeUsrOptn(String option) {
         if (option.equals(CalcControl.MAIN_MENU_OPTION)) {
-            return validateInput(MAIN_MENU_USER_INPUT_VALIDATION, MAIN_MENU_ERROR_MSG);
+            return validateInput(MAIN_MENU_USER_INPUT_VALIDATION, MAIN_MENU_ERROR_MSG).toUpperCase();
         } else if (option.equals(CalcControl.NEXT_STEP_OPTION)) {
-            return validateInput(NEXT_STEP_USER_INPUT_VALIDATION, NEXT_STEP_ERROR_MSG);
+            return validateInput(NEXT_STEP_USER_INPUT_VALIDATION, NEXT_STEP_ERROR_MSG).toUpperCase();
         }
         return null;
     }
