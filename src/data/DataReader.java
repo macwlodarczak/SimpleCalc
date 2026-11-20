@@ -8,10 +8,10 @@ import java.util.Scanner;
 public class DataReader {
     private final Scanner sc = new Scanner(System.in);
 
-    private static final String MAIN_MENU_USER_INPUT_VALIDATION = "^(?:[-+*/]|[Ee]xit)$";
+    private static final String MAIN_MENU_USER_INPUT_VALIDATION = "^(?:[-+*/]|[Ee][Xx][Ii][Tt])$";
     private static final String MAIN_MENU_ERROR_MSG = "Please enter correct character or type 'Exit' to quit";
 
-    private static final String NEXT_STEP_USER_INPUT_VALIDATION = "^(?:[-+=*/]|[Mm]enu)$";
+    private static final String NEXT_STEP_USER_INPUT_VALIDATION = "^(?:[-+=*/]|[Mm][Ee][Nn][Uu])$";
     private static final String NEXT_STEP_ERROR_MSG = "Please enter correct character or type 'Menu' to quit";
 
     public String takeUsrOptn(String option) {

@@ -17,8 +17,8 @@ public class Printer {
         String multiplyOutput = String.format(multiplyFormat, CalcControl.MULTIPLICATION);
         String divideFormat = "%s Divide a result";
         String divideOutput = String.format(divideFormat, CalcControl.DIVISION);
-        String returnMenuFormat = "type: "+ "\"" + "%s"+ "\"" + " to return";
-        String returnMenuOutput = String.format(returnMenuFormat, CalcControl.RETURN_TO_MAIN_MENU);
+        String returnMenuFormat = "type: " + "\"" + "%s" + "\"" + " to return";
+        String returnMenuOutput = String.format(returnMenuFormat, "Menu");
 
         System.out.println("Choose next step:");
         System.out.println(resultOutput);
@@ -28,6 +28,19 @@ public class Printer {
         System.out.println(divideOutput);
         System.out.println(returnMenuOutput);
     }
+
+    public static void printCalcOptns() {
+        System.out.println(">>>simpleCALCULATORv0.1<<<");
+        System.out.println("Choose an option:");
+        System.out.println("(Type correct sign)" + "\n");
+        System.out.println("\"" + CalcControl.ADDITION + "\"" + " for Addition (+)");
+        System.out.println("\"" + CalcControl.SUBTRACTION + "\"" + "for Substraction (-)");
+        System.out.println("\"" + CalcControl.MULTIPLICATION + "\"" + " for Multiplication (*)");
+        System.out.println("\"" + CalcControl.DIVISION + "\"" + " for Division (/)");
+        System.out.println("\"" + CalcControl.FACTORIAL + "\"" + " for Factorial (!)");
+        System.out.println("type: " + "\"Exit\"" + " for Quit");
+    }
+
     public void printOperationName(String operationType) {
         if (operationType.equals(CalcControl.ADDITION))
             System.out.println("Selected operation: Addition(+)");
@@ -40,22 +53,12 @@ public class Printer {
         if (operationType.equals(CalcControl.FACTORIAL))
             System.out.println("Selected operation: Factorial (!)");
     }
+
     public void printResult(double a) {
         System.out.println("\nResult: " + a + "\n");
     }
+
     public void printResult(BigInteger a) {
         System.out.println("\nResult: " + a + "\n");
-    }
-
-    public static void printCalcOptns() {
-        System.out.println(">>>simpleCALCULATORv0.1<<<");
-        System.out.println("Choose an option:");
-        System.out.println("(Type correct sign)" + "\n");
-        System.out.println("\"" + CalcControl.ADDITION + "\"" + " for Addition (+)");
-        System.out.println("\"" + CalcControl.SUBTRACTION + "\"" + "for Substraction (-)");
-        System.out.println("\"" + CalcControl.MULTIPLICATION + "\"" + " for Multiplication (*)");
-        System.out.println("\"" + CalcControl.DIVISION + "\"" + " for Division (/)");
-        System.out.println("\"" + CalcControl.FACTORIAL + "\"" + " for Factorial (!)");
-        System.out.println("type: " + "\"" + CalcControl.EXIT + "\"" + " for Quit");
     }
 }

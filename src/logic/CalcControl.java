@@ -15,7 +15,7 @@ public class CalcControl {
     public static final String FACTORIAL = "!";
     public static final String EXIT = "EXIT";
     public static final String SEE_RESULT = "=";
-    public static final String RETURN_TO_MAIN_MENU = "menu";
+    public static final String RETURN_TO_MAIN_MENU = "MENU";
 
     private final Printer printer = new Printer();
     private final DataReader dr = new DataReader();
